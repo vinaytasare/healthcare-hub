@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
 import { useTheme } from "../context/ThemeContext";
 import { Sun, Moon } from "lucide-react";
+import Logo from "./Logo";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -15,8 +16,9 @@ const Navbar = () => {
 
   return (
     <nav className="bg-blue-700 dark:bg-gray-900 text-white px-6 py-4 flex justify-between items-center shadow-md">
-      <Link to="/dashboard" className="text-xl font-bold tracking-wide">
-        🏥 Healthcare Hub
+      <Link to="/dashboard" className="flex items-center gap-3">
+        <Logo size="sm" />
+        <span className="text-xl font-bold tracking-wide">Healthcare Hub</span>
       </Link>
       <div className="flex items-center gap-6">
         <Link to="/dashboard" className="hover:text-blue-200 transition text-sm">Dashboard</Link>

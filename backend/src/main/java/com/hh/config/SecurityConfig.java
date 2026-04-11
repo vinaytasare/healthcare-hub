@@ -59,13 +59,12 @@ public class SecurityConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(List.of(
                 "http://localhost:5173",
-                "https://healthcare-hub.vercel.app",
-                "https://*.vercel.app"));
+                "https://healthcare-hub-kappa.vercel.app"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
-        CorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        ((UrlBasedCorsConfigurationSource) source).registerCorsConfiguration("/**", config);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", config);
         return source;
     }
 

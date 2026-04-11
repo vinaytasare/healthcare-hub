@@ -6,7 +6,12 @@ import api from "../api/axios";
 const Register = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
-  const [form, setForm] = useState({ name: "", email: "", password: "", phone: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    phone: "",
+  });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -18,7 +23,7 @@ const Register = () => {
       const res = await api.post("/api/auth/register", form);
       login(
         { name: res.data.name, email: res.data.email, role: res.data.role },
-        res.data.token
+        res.data.token,
       );
       navigate("/dashboard");
     } catch (err) {
@@ -32,8 +37,24 @@ const Register = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center">
       <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-blue-700">🏥 Healthcare Hub</h1>
-          <p className="text-gray-500 mt-2">Create your account</p>
+          <div className="flex justify-center mb-3">
+            <div className="w-14 h-14 rounded-2xl bg-blue-600 flex items-center justify-center">
+              <svg viewBox="0 0 100 100" className="w-8 h-8">
+                <path
+                  d="M50 20 L50 80 M20 50 L80 50"
+                  stroke="white"
+                  strokeWidth="18"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
+          </div>
+          <h1 className="text-3xl font-bold text-blue-700 dark:text-blue-400">
+            Healthcare Hub
+          </h1>
+          <p className="text-gray-500 dark:text-gray-400 mt-2">
+            Create your account
+          </p>
         </div>
         {error && (
           <div className="bg-red-50 text-red-600 px-4 py-3 rounded-lg mb-4 text-sm">
@@ -42,7 +63,9 @@ const Register = () => {
         )}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Full Name
+            </label>
             <input
               type="text"
               value={form.name}
@@ -53,7 +76,9 @@ const Register = () => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Email
+            </label>
             <input
               type="email"
               value={form.email}
@@ -64,7 +89,9 @@ const Register = () => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Phone
+            </label>
             <input
               type="tel"
               value={form.phone}
@@ -74,7 +101,9 @@ const Register = () => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Password
+            </label>
             <input
               type="password"
               value={form.password}
@@ -94,7 +123,10 @@ const Register = () => {
         </form>
         <p className="text-center text-sm text-gray-500 mt-6">
           Already have an account?{" "}
-          <Link to="/login" className="text-blue-600 font-medium hover:underline">
+          <Link
+            to="/login"
+            className="text-blue-600 font-medium hover:underline"
+          >
             Sign In
           </Link>
         </p>
