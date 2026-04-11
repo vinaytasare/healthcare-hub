@@ -45,21 +45,21 @@ public class DataInitializer implements CommandLineRunner {
         // Seed health tips
         if (healthTipRepository.count() == 0) {
             healthTipRepository.save(new HealthTip(null, "Stay Hydrated",
-                "Drink at least 8 glasses of water daily to maintain optimal body function and energy levels.",
-                "Hydration", "💧", LocalDate.now()));
+                    "Drink at least 8 glasses of water daily to maintain optimal body function and energy levels.",
+                    "Hydration", "Water", LocalDate.now()));
             healthTipRepository.save(new HealthTip(null, "Exercise Daily",
-                "30 minutes of moderate exercise daily reduces risk of heart disease by up to 35%.",
-                "Fitness", "🏃", LocalDate.now()));
+                    "30 minutes of moderate exercise daily reduces risk of heart disease by up to 35%.",
+                    "Fitness", "Run", LocalDate.now()));
             healthTipRepository.save(new HealthTip(null, "Sleep Well",
-                "Adults need 7-9 hours of quality sleep for proper immune function and mental health.",
-                "Sleep", "😴", LocalDate.now()));
+                    "Adults need 7-9 hours of quality sleep for proper immune function and mental health.",
+                    "Sleep", "Sleep", LocalDate.now()));
             healthTipRepository.save(new HealthTip(null, "Eat Vegetables",
-                "Fill half your plate with vegetables and fruits to get essential vitamins and minerals.",
-                "Nutrition", "🥦", LocalDate.now()));
+                    "Fill half your plate with vegetables and fruits to get essential vitamins and minerals.",
+                    "Nutrition", "Food", LocalDate.now()));
             healthTipRepository.save(new HealthTip(null, "Manage Stress",
-                "Practice deep breathing or meditation for 10 minutes daily to reduce cortisol levels.",
-                "Mental Health", "🧘", LocalDate.now()));
-            System.out.println("✅ Health tips seeded");
+                    "Practice deep breathing or meditation for 10 minutes daily to reduce cortisol levels.",
+                    "Mental Health", "Relax", LocalDate.now()));
+            System.out.println("Health tips seeded");
         }
     }
 }

@@ -6,7 +6,10 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "health_tips")
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class HealthTip {
 
     @Id
@@ -20,6 +23,7 @@ public class HealthTip {
     private String content;
 
     private String category;
+    @Column(length = 50)
     private String icon;
     private LocalDate date = LocalDate.now();
 }
