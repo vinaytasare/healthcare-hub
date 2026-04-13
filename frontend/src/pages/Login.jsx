@@ -9,11 +9,17 @@ const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [slowLoad, setSlowLoad] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
+
+    const timer = setTimeout(() => {
+      setSlowLoad(true);
+    }, 5000);
+
     try {
       const res = await api.post("/api/auth/login", form);
       login(
@@ -24,7 +30,9 @@ const Login = () => {
     } catch (err) {
       setError(err.response?.data?.error || "Login failed");
     } finally {
+      clearTimeout(timer);
       setLoading(false);
+      setSlowLoad(false);
     }
   };
 
@@ -90,6 +98,12 @@ const Login = () => {
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>
+
+          {slowLoad && (
+            <div className="text-center text-sm text-gray-500 dark:text-gray-400 mt-3 animate-pulse">
+              Server is waking up, please wait 30-60 seconds...
+            </div>
+          )}
         </form>
         <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-6">
           Don't have an account?{" "}
